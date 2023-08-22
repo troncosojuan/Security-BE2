@@ -1,0 +1,6 @@
+
+usuario	| password | Rol | Tipo |
+
+user-examen  admin  USER  Realm
+
+user	user	null	null
