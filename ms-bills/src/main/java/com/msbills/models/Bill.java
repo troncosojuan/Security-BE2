@@ -24,6 +24,8 @@ public class Bill {
 
     private String customerBill;
 
+    private String userId;
+
     private String productBill;
 
     private Double totalPrice;

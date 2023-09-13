@@ -19,10 +19,16 @@ spring:
     gateway:
       default-filters: TokenRelay
       routes:
-        - id: ms-bill
-          uri: lb://ms-bill
+        - id: ms-bills
+          uri: lb://ms-bills
           predicates:
             - Path=/api/v1/**
+          filters:
+            - StripPrefix=2
+        - id: ms-users
+          uri: localhost:8081
+          predicates:
+            - Path=/api/v2/**
           filters:
             - StripPrefix=2
 # Configuraciones de seguridad
@@ -40,4 +46,4 @@ spring:
             scope:
               - openid
             authorization-grant-type: authorization_code
-
+            redirect-uri: http://localhost:8090/login/oauth2/code/keycloak
