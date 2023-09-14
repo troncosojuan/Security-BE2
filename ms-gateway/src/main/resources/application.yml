@@ -26,7 +26,7 @@ spring:
           filters:
             - StripPrefix=2
         - id: ms-users
-          uri: localhost:8081
+          uri: lb://ms-users
           predicates:
             - Path=/api/v2/**
           filters:

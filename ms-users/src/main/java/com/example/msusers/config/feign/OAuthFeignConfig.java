@@ -1,6 +1,7 @@
 package com.example.msusers.config.feign;
 
 import feign.RequestInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.*;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -20,7 +21,7 @@ public class OAuthFeignConfig {
         this.clientRegistrationRepository = clientRegistrationRepository;
     }
 
-
+    @Bean
     public RequestInterceptor requestInterceptor() {
         ClientRegistration clientRegistration = clientRegistrationRepository.findByRegistrationId(CLIENT_REGISTRATION_ID);
         OAuthClientCredentialsFeignManager clientCredentialsFeignManager =
@@ -32,7 +33,7 @@ public class OAuthFeignConfig {
         };
     }
 
-
+    @Bean
     OAuth2AuthorizedClientManager authorizedClientManager() {
         OAuth2AuthorizedClientProvider authorizedClientProvider = OAuth2AuthorizedClientProviderBuilder.builder()
                 .clientCredentials()

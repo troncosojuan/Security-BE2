@@ -1,7 +1,7 @@
 spring:
   application:
     name: ms-users
-
+# Configuraciones de eureka
 eureka:
   instance:
     hostname: localhost
@@ -9,6 +9,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            authorization-grant-type: client_credentials
+            client-id: keycloak-client-user
+            client-secret: MVuVQouKtoeCOt3qxILaI1NtqEF2wKEG
+        provider:
+          keycloak:
+            token-uri: http://localhost:8080/realms/Examen-BE2/protocol/openid-connect/token
 dh:
   keycloak:
     realm: Examen-BE2
@@ -18,3 +29,5 @@ dh:
     clientSecret: MVuVQouKtoeCOt3qxILaI1NtqEF2wKEG
 server:
   port: 8081
+
+

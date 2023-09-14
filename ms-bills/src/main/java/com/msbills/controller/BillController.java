@@ -17,6 +17,7 @@ public class BillController {
     private final BillService service;
 
     @GetMapping("/all")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     public ResponseEntity<List<Bill>> getAll() {
         return ResponseEntity.ok().body(service.getAllBill());
     }
